@@ -17,5 +17,4 @@ p.ChangeDutyCycle(sys.argv[1])
 		# p.ChangeDutyCycle(2.5)
 		# time.sleep(1)
 
-except KeyboardInterrupt:
-	GPIO.cleanup()
+GPIO.cleanup()

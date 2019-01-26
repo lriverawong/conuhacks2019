@@ -10,7 +10,7 @@ GPIO.setup(4, GPIO.OUT)
 p = GPIO.PWM(4, 50)
 p.start(2)
 
-p.ChangeDutyCycle(sys.argv[1])
+p.ChangeDutyCycle(float(sys.argv[1]))
 		# time.sleep(1)
 		# p.ChangeDutyCycle(12.5)
 		# time.sleep(1)

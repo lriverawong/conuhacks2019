@@ -19,3 +19,4 @@ try:
 
 except KeyboardInterrupt:
 	GPIO.cleanup()
+print("end of program")

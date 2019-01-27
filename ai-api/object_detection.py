@@ -7,6 +7,7 @@ import json
 import glob
 import os
 import json
+import sys
 
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
@@ -103,6 +104,9 @@ def main():
     tokenized_descriptions = readJson(json_data)
     item_class = classification(tokenized_descriptions)
     # print(item_class)
+    sys.path.append(os.path.abspath(os.path.join('..', 'hardware')))
+    from hardware.main_servo import *
+    main_servo.classify_trash(item_class)
     
 if __name__ == '__main__':
 

@@ -89,9 +89,9 @@ def classification(descriptions):
             return 1
         elif (word in greenbin):
             return 2
-        else:
-            return 3
-    print("Should never reach here....")
+    # if for all items it didn't match a non-garbage, then the final thing returns garbage
+    return 3
+    print("Didn't match anything")
 
 def main():
     # get json data from latest photo addition

@@ -15,18 +15,18 @@ def findNewestFile(image_path):
     images = image_path + "/*"
     list_of_files = glob.glob(images) # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
-    print(latest_file)
+    # print(latest_file)
     return str(latest_file)
 
 def readTextFile(path):
     text_file = open(path, "r")
     lines = text_file.read().split('\n')
-    print(lines)
+    # print(lines)
     text_file.close()
 
 def getJson():
     newest_file = findNewestFile("/home/hacker/image-bank")
-    print(newest_file)
+    # print(newest_file)
     """Run a label request on a single image"""
 
     credentials = GoogleCredentials.get_application_default()
@@ -52,9 +52,18 @@ def getJson():
     return json_string
 
 def readJson(json_data):
-    print(json_data)
+    # print(json_data)
     data = json.loads(json_data)
-    print(data["responses"][0]["labelAnnotations"][0]["description"])
+    # print(data["responses"][0]["labelAnnotations"][0]["description"])
+    labels = data["responses"][0]["labelAnnotations"]
+    # loop through the description and add into a list
+    word_list = []
+    for label in labels:
+        split_label = label.split() #split by any whitespace
+        lowered_label = [x.lower() for x in split_label]
+        for word in lowered_label:
+            word_list.append(word)
+    print(word_list)
 
 
 def main():

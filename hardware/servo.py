@@ -21,3 +21,5 @@ def move_servo(pin_number, position):
 	except KeyboardInterrupt:
 		GPIO.cleanup()
 		print "Not a number"
+
+move_servo(11,4)

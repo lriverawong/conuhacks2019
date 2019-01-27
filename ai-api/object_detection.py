@@ -11,7 +11,7 @@ from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
 def findNewestFile():
-    list_of_files = glob.glob('/home/hacker/image-bank/*') # * means all
+    list_of_files = glob.glob('/home/hacker/conuhacks2019/image-bank/*') # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
     return str(latest_file)

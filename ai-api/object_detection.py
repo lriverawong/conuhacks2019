@@ -92,7 +92,7 @@ def classification(descriptions):
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "w")
-            f1.write(int(count_var))
+            f1.write(str(count_var))
             f1.close()
             return 0
         elif (word in greybin):
@@ -104,7 +104,7 @@ def classification(descriptions):
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/greybin-count", "w")
-            f1.write(int(count_var))
+            f1.write(str(count_var))
             f1.close()
         elif (word in greenbin):
             print("This is a green bin item!")
@@ -115,7 +115,7 @@ def classification(descriptions):
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/greenbin-count", "w")
-            f1.write(int(count_var))
+            f1.write(str(count_var))
             f1.close()
     # if for all items it didn't match a non-garbage, then the final thing returns garbage
     return 3

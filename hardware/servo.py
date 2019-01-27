@@ -2,20 +2,22 @@ import RPi.GPIO as GPIO
 import time
 
 import sys
-GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(4, GPIO.OUT)
+def move_servo(pin_number, position):
+	GPIO.setmode(GPIO.BCM)
 
-p = GPIO.PWM(4, 50)
-p.start(8)
+	GPIO.setup(pin_number, GPIO.OUT)
 
-try:
-	while True:
-		mode=float(raw_input('Input:'))
-		p.ChangeDutyCycle(mode)
-		time.sleep(2)
-		p.ChangeDutyCycle(8)
+	p = GPIO.PWM(pin_number, 50)
+	p.start(8)
 
-except KeyboardInterrupt:
-	GPIO.cleanup()
-	print "Not a number"
+	try:
+		while True:
+			mode = 11 #float(raw_input('Input:'))
+			p.ChangeDutyCycle(position)
+			time.sleep(2)
+			p.ChangeDutyCycle(8)
+
+	except KeyboardInterrupt:
+		GPIO.cleanup()
+		print "Not a number"

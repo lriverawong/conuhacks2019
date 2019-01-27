@@ -17,7 +17,7 @@ def findNewestFile(image_path):
     images = image_path + "/*"
     list_of_files = glob.glob(images) # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
-    # print(latest_file)
+    print(latest_file)
     return str(latest_file)
 
 # returns a list of all the items in a specific classification file
@@ -69,7 +69,7 @@ def readJson(json_data):
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
             word_list.append(word.encode('ascii', 'ignore'))
-    # print(word_list)
+    print(word_list)
     return word_list
 
 # returns the value corresponding to the corrrect bin

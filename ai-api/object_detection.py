@@ -125,7 +125,7 @@ def classification(descriptions):
     count_var += 1
     f1.close()
     f1 = open("/home/hacker/conuhacks2019/object-count/garbage-count", "w")
-    f1.write(int(count_var) + "\n")
+    f1.write(str(count_var) + "\n")
     f1.close()
     return 3
 

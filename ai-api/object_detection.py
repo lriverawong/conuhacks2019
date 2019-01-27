@@ -16,7 +16,13 @@ def findNewestFile():
     print(latest_file)
     return str(latest_file)
 
-def main():
+def readTextFile(path):
+    text_file = open(path, "r")
+    lines = text_file.read().split('\n')
+    print(lines)
+    text_file.close()
+
+def getJson():
     newest_file = findNewestFile()
     print(newest_file)
     """Run a label request on a single image"""
@@ -38,7 +44,11 @@ def main():
             }]
         })
         response = service_request.execute()
-        print json.dumps(response, indent=4, sort_keys=True)	#Print it out and make it somewhat pretty.
+    print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
+
+def main():
+    readTextFile("/home/hacker/ai-api/bluebin")
+    # getJson()
 
 if __name__ == '__main__':
 

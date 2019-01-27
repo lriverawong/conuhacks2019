@@ -10,8 +10,9 @@ import os
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
-def findNewestFile():
-    list_of_files = glob.glob('/home/hacker/conuhacks2019/image-bank/*') # * means all
+def findNewestFile(image_path):
+    images = image_path + "/*"
+    list_of_files = glob.glob(image_path) # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
     return str(latest_file)
@@ -23,7 +24,7 @@ def readTextFile(path):
     text_file.close()
 
 def getJson():
-    newest_file = findNewestFile()
+    newest_file = findNewestFile("/home/hacker/conuhacks2019/image-bank")
     print(newest_file)
     """Run a label request on a single image"""
 
@@ -47,7 +48,7 @@ def getJson():
     print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
 
 def main():
-    readTextFile("/home/hacker/ai-api/bluebin")
+    readTextFile("/home/hacker/conuhacks2019/ai-api/bluebin")
     # getJson()
 
 if __name__ == '__main__':

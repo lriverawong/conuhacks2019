@@ -17,7 +17,7 @@ def findNewestFile(image_path):
     images = image_path + "/*"
     list_of_files = glob.glob(images) # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
-    print(latest_file)
+    # print(latest_file)
     return str(latest_file)
 
 # returns a list of all the items in a specific classification file
@@ -51,7 +51,7 @@ def getJson():
             }]
         })
         response = service_request.execute()
-    print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
+    # print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
     json_string = json.dumps(response)
     # convert the python dictionary above into a JSON string
     return json_string
@@ -69,7 +69,7 @@ def readJson(json_data):
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
             word_list.append(word.encode('ascii', 'ignore'))
-    print(word_list)
+    # print(word_list)
     return word_list
 
 # returns the value corresponding to the corrrect bin
@@ -84,14 +84,17 @@ def classification(descriptions):
     garbage = readTextFile("/home/hacker/conuhacks2019/ai-api/garbage")
     for word in descriptions:
         if (word in bluebin):
+            print("This is a blue bin item!")
             return 0
         elif (word in greybin):
+            print("This is a grey bin item!")
             return 1
         elif (word in greenbin):
+            print("This is a green bin item!")
             return 2
     # if for all items it didn't match a non-garbage, then the final thing returns garbage
     return 3
-    print("Didn't match anything")
+    print("Didn't match anything, therefore it is garbage.")
 
 def main():
     # get json data from latest photo addition
@@ -99,7 +102,7 @@ def main():
     # get the tokenized versions of the descriptions of object in the photo
     tokenized_descriptions = readJson(json_data)
     item_class = classification(tokenized_descriptions)
-    print(item_class)
+    # print(item_class)
     
 if __name__ == '__main__':
 

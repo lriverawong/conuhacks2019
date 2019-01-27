@@ -19,4 +19,4 @@ def classify_trash(class_type):
 		move_servo(17,3.5)
 		move_servo(17,8)
 
-classify_trash(3)
+# classify_trash(3)

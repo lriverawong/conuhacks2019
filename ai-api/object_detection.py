@@ -11,7 +11,8 @@ import sys
 
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
-
+# from main_servo import *
+from main_servo import classify_trash
 
 # returns the filename of the most recently added file
 def findNewestFile(image_path):
@@ -86,6 +87,7 @@ def classification(descriptions):
     for word in descriptions:
         if (word in bluebin):
             print("This is a blue bin item!")
+            # f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "r+")
             return 0
         elif (word in greybin):
             print("This is a grey bin item!")
@@ -105,7 +107,6 @@ def main():
     item_class = classification(tokenized_descriptions)
     # print(item_class)
     sys.path.append(os.path.abspath("/home/hacker/conuhacks2019/hardware"))
-    from main_servo import *
     classify_trash(item_class)
     
 if __name__ == '__main__':

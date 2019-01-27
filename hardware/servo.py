@@ -12,14 +12,11 @@ def move_servo(pin_number, position):
 	p.start(8)
 
 	try:
-		while True:
-			mode = 11 #float(raw_input('Input:'))
-			p.ChangeDutyCycle(position)
-			time.sleep(2)
-			p.ChangeDutyCycle(8)
+		mode = 11 #float(raw_input('Input:'))
+		p.ChangeDutyCycle(position)
+		time.sleep(2)
+		p.ChangeDutyCycle(8)
 
 	except KeyboardInterrupt:
 		GPIO.cleanup()
 		print "Not a number"
-
-move_servo(11,4)

@@ -131,11 +131,16 @@ def classification(descriptions):
     f1.close()
 
 def main():
+    log_file = open("/home/hacker/conuhacks2019/object-count/log", "a+")
     # get json data from latest photo addition
     json_data = getJson()
     # get the tokenized versions of the descriptions of object in the photo
     tokenized_descriptions = readJson(json_data)
+    log_file.write(str(tokenized_descriptions))
     item_class = classification(tokenized_descriptions)
+    log_file.write(str(item_class))
+    log_file.write(str('-----------'))
+    log_file.close()
     # print(item_class)
     sys.path.append(os.path.abspath("/home/hacker/conuhacks2019/hardware"))
     classify_trash(item_class)

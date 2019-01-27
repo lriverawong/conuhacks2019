@@ -18,6 +18,7 @@ def findNewestFile():
 
 def main():
     newest_file = findNewestFile
+    print(newest_file)
     """Run a label request on a single image"""
 
     credentials = GoogleCredentials.get_application_default()

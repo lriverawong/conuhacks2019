@@ -52,13 +52,15 @@ def getJson():
     return json_string
 
 def readJson(json_data):
-    data = json.load(json_data)
+    print(json_data)
+    data = json.loads(json_data)
     print(data["responses"]["labelAnnotations"][0]["description"])
 
 
 def main():
     readTextFile("/home/hacker/conuhacks2019/ai-api/bluebin")
     json_data = getJson()
+    # print(json_data)
     readJson(json_data)
 
 if __name__ == '__main__':

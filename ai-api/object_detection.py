@@ -59,7 +59,7 @@ def readJson(json_data):
     # loop through the description and add into a list
     word_list = []
     for label in labels:
-        split_label = label.split() #split by any whitespace
+        split_label = label["description"].split() #split by any whitespace
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
             word_list.append(word)

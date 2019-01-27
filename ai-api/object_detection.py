@@ -13,7 +13,7 @@ from oauth2client.client import GoogleCredentials
 
 def findNewestFile(image_path):
     images = image_path + "/*"
-    list_of_files = glob.glob(image_path) # * means all
+    list_of_files = glob.glob(images) # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
     return str(latest_file)

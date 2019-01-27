@@ -3,7 +3,7 @@ import time
 
 import sys
 
-def move_servo(pin_number, position):
+def move_servo(pin_number, position, delay=2):
 	GPIO.setmode(GPIO.BCM)
 
 	GPIO.setup(pin_number, GPIO.OUT)
@@ -14,7 +14,7 @@ def move_servo(pin_number, position):
 	try:
 		mode = 11 #float(raw_input('Input:'))
 		p.ChangeDutyCycle(position)
-		time.sleep(2)
+		time.sleep(delay)
 		p.ChangeDutyCycle(8)
 
 	except KeyboardInterrupt:

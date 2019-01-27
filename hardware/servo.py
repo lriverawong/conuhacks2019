@@ -5,9 +5,9 @@ import sys
 
 class Servo:
 	def __init__(self):
-		init_GPIO()
+		self.init_GPIO()
 
-	def init_GPIO():
+	def init_GPIO(self):
 		GPIO.setmode(GPIO.BCM)
 
 		GPIO.setup(4, GPIO.OUT)
@@ -15,10 +15,10 @@ class Servo:
 		self.p = GPIO.PWM(4, 50)
 		self.p.start(2)
 
-	def cleanup():
+	def cleanup(self):
 		GPIO.cleanup()
 
-	def change_duty_cycle(mode):
+	def change_duty_cycle(self, mode):
 		self.p.ChangeDutyCycle(mode)
 
 s = Servo()

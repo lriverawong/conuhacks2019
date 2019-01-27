@@ -2,35 +2,20 @@ import RPi.GPIO as GPIO
 import time
 
 import sys
+GPIO.setmode(GPIO.BCM)
 
-class Servo:
-	def __init__(self):
-		init_GPIO()
+GPIO.setup(4, GPIO.OUT)
 
-	def init_GPIO():
-		GPIO.setmode(GPIO.BCM)
-
-		GPIO.setup(4, GPIO.OUT)
-
-		self.p = GPIO.PWM(4, 50)
-		self.p.start(2)
-
-	def cleanup():
-		GPIO.cleanup()
-
-	def change_duty_cycle(mode):
-		self.p.ChangeDutyCycle(mode)
-
-s = Servo()
+p = GPIO.PWM(4, 50)
+p.start(2)
 
 try:
 	while True:
 		mode=float(raw_input('Input:'))
-		s.init_GPIO()
-		s.change_duty_cycle(mode)
-		time.sleep(1)
-		s.cleanup()
+		p.start()
+		p.ChangeDutyCycle(mode)
+		p.stop()
 
 except KeyboardInterrupt:
-	cleanup()
+	GPIO.cleanup()
 	print "Not a number"

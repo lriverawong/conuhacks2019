@@ -54,7 +54,7 @@ def getJson():
 def readJson(json_data):
     print(json_data)
     data = json.loads(json_data)
-    print(data["responses"]["labelAnnotations"][0]["description"])
+    print(data["responses"][0]["labelAnnotations"][0]["description"])
 
 
 def main():

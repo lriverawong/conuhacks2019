@@ -11,6 +11,8 @@ import json
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
+
+# returns the filename of the most recently added file
 def findNewestFile(image_path):
     images = image_path + "/*"
     list_of_files = glob.glob(images) # * means all
@@ -18,12 +20,15 @@ def findNewestFile(image_path):
     # print(latest_file)
     return str(latest_file)
 
+# returns a list of all the items in a specific classification file
 def readTextFile(path):
     text_file = open(path, "r")
     lines = text_file.read().split('\n')
     # print(lines)
     text_file.close()
+    return lines
 
+# returns the json_string of the API return statement, as a json dump (python string)
 def getJson():
     newest_file = findNewestFile("/home/hacker/image-bank")
     # print(newest_file)
@@ -51,6 +56,7 @@ def getJson():
     # convert the python dictionary above into a JSON string
     return json_string
 
+# returns the individual word descriptions from the API
 def readJson(json_data):
     # print(json_data)
     data = json.loads(json_data)
@@ -63,15 +69,38 @@ def readJson(json_data):
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
             word_list.append(word.encode('ascii', 'ignore'))
-    print(word_list)
+    # print(word_list)
+    return word_list
 
+# returns the value corresponding to the corrrect bin
+#   bluebin  --  0
+#   greybin  --  1
+#   greenbin --  2
+#   garbage  --  3
+def classification(descriptions):
+    bluebin = readTextFile("/home/hacker/conuhacks2019/ai-api/bluebin")
+    greybin = readTextFile("/home/hacker/conuhacks2019/ai-api/greybin")
+    greenbin = readTextFile("/home/hacker/conuhacks2019/ai-api/greenbin")
+    garbage = readTextFile("/home/hacker/conuhacks2019/ai-api/garbage")
+    for word in descriptions:
+        if (word in bluebin):
+            return 0
+        elif (word in greybin):
+            return 1
+        elif (word in greenbin):
+            return 2
+        else:
+            return 3
+    print("Should never reach here....")
 
 def main():
-    readTextFile("/home/hacker/conuhacks2019/ai-api/bluebin")
+    # get json data from latest photo addition
     json_data = getJson()
-    # print(json_data)
-    readJson(json_data)
-
+    # get the tokenized versions of the descriptions of object in the photo
+    tokenized_descriptions = readJson(json_data)
+    item_class = classification(tokenized_descriptions)
+    print(item_class)
+    
 if __name__ == '__main__':
 
     main()

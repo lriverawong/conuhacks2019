@@ -92,33 +92,32 @@ def classification(descriptions):
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "w")
-            f1.write(str(count_var))
+            f1.write(str(count_var) + "\n")
             f1.close()
             return 0
         elif (word in greybin):
             print("This is a grey bin item!")
-            return 1
             f1 = open("/home/hacker/conuhacks2019/object-count/greybin-count", "r+")
             count_var = f1.readlines()
             count_var = int(count_var[0])
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/greybin-count", "w")
-            f1.write(str(count_var))
+            f1.write(str(count_var) + "\n")
             f1.close()
+            return 1
         elif (word in greenbin):
             print("This is a green bin item!")
-            return 2
             f1 = open("/home/hacker/conuhacks2019/object-count/greenbin-count", "r+")
             count_var = f1.readlines()
             count_var = int(count_var[0])
             count_var += 1
             f1.close()
             f1 = open("/home/hacker/conuhacks2019/object-count/greenbin-count", "w")
-            f1.write(str(count_var))
+            f1.write(str(count_var) + "\n")
             f1.close()
+            return 2
     # if for all items it didn't match a non-garbage, then the final thing returns garbage
-    return 3
     print("Didn't match anything, therefore it is garbage.")
     f1 = open("/home/hacker/conuhacks2019/object-count/garbage-count", "r+")
     count_var = f1.readlines()
@@ -126,8 +125,9 @@ def classification(descriptions):
     count_var += 1
     f1.close()
     f1 = open("/home/hacker/conuhacks2019/object-count/garbage-count", "w")
-    f1.write(int(count_var))
+    f1.write(int(count_var) + "\n")
     f1.close()
+    return 3
 
 def main():
     log_file = open("/home/hacker/conuhacks2019/object-count/log", "a+")
@@ -135,10 +135,10 @@ def main():
     json_data = getJson()
     # get the tokenized versions of the descriptions of object in the photo
     tokenized_descriptions = readJson(json_data)
-    log_file.write(str(tokenized_descriptions))
+    log_file.write(str(tokenized_descriptions ) + "\n")
     item_class = classification(tokenized_descriptions)
-    log_file.write(str(item_class))
-    log_file.write(str('-----------'))
+    log_file.write(str(item_class) + "\n")
+    log_file.write(str('-----------') + "\n")
     log_file.close()
     # print(item_class)
     sys.path.append(os.path.abspath("/home/hacker/conuhacks2019/hardware"))

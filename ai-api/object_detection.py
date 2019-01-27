@@ -47,12 +47,13 @@ def getJson():
         })
         response = service_request.execute()
     print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
-    return response
+    json_string = json.dumps(response)
+    # convert the python dictionary above into a JSON string
+    return json_string
 
 def readJson(json_data):
-    with open(json_data) as f:
-        data = json.load(f)
-        print(data["responses"]["labelAnnotations"][0]["description"])
+    data = json.load(json_data)
+    print(data["responses"]["labelAnnotations"][0]["description"])
 
 
 def main():

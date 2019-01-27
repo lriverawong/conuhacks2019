@@ -62,8 +62,7 @@ def readJson(json_data):
         split_label = label["description"].split() #split by any whitespace
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
-            word_list.append(word)
-    word_list.encode('ascii', 'ignore')
+            word_list.append(word.encode('ascii', 'ignore'))
     print(word_list)
 
 

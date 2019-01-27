@@ -6,6 +6,8 @@ import sys
 def move_servo(pin_number, position, delay=2):
 	GPIO.setmode(GPIO.BCM)
 
+	GPIO.setwarnings(False)
+
 	GPIO.setup(pin_number, GPIO.OUT)
 
 	p = GPIO.PWM(pin_number, 50)

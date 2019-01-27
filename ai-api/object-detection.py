@@ -14,10 +14,10 @@ def findNewestFile():
     list_of_files = glob.glob('/home/hacker/image-bank/*') # * means all
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
-    return latest_file
+    return str(latest_file)
 
 def main():
-    newest_file = findNewestFile
+    newest_file = findNewestFile()
     print(newest_file)
     """Run a label request on a single image"""
 

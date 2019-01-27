@@ -17,13 +17,14 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='example-graph',
         figure={
-            'data': [
-                {'x': [1, 2], 'y': [4, 1]},
-                {'x': [1, 2], 'y': [2, 4]},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
+            labels = ['Blue Bin','Grey Bin','Green Bin','Garbare'],
+            values = [4500,2500,1053,500],
+            colors = ['#375190', '#737680', '#4B8B4F', '#8B6D4B'],
+            trace = go.Pie(labels=labels, values=values,
+                    hoverinfo='label+percent', textinfo='value + label',
+                    textfont=dict(size=30),
+                    marker=dict(colors=colors,
+                                line=dict(color='#000000', width=1)))
         }
     )
 ])

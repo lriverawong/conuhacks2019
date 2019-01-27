@@ -11,8 +11,7 @@ import sys
 
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
-# from main_servo import *
-from main_servo import classify_trash
+
 
 # returns the filename of the most recently added file
 def findNewestFile(image_path):
@@ -143,6 +142,8 @@ def main():
     log_file.close()
     # print(item_class)
     sys.path.append(os.path.abspath("/home/hacker/conuhacks2019/hardware"))
+    # from main_servo import *
+    from main_servo import classify_trash
     classify_trash(item_class)
     
 if __name__ == '__main__':

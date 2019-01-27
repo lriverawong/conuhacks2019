@@ -4,7 +4,7 @@ import time
 import sys
 
 class Servo:
-	def __init__():
+	def __init__(self):
 		init_GPIO()
 
 	def init_GPIO():

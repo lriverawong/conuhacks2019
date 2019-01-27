@@ -6,6 +6,7 @@ import base64
 import json
 import glob
 import os
+import json
 
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
@@ -46,10 +47,18 @@ def getJson():
         })
         response = service_request.execute()
     print(json.dumps(response, indent=4, sort_keys=True))	#Print it out and make it somewhat pretty.
+    return response
+
+def readJson(json_data):
+    with open(json_data) as f:
+        data = json.load(f)
+        print(data["responses"]["labelAnnotations"][0]["description"])
+
 
 def main():
     readTextFile("/home/hacker/conuhacks2019/ai-api/bluebin")
-    # getJson()
+    json_data = getJson()
+    readJson(json_data)
 
 if __name__ == '__main__':
 

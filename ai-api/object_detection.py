@@ -70,7 +70,7 @@ def readJson(json_data):
         lowered_label = [x.lower() for x in split_label]
         for word in lowered_label:
             word_list.append(word.encode('ascii', 'ignore'))
-    # print(word_list)
+    print(word_list)
     return word_list
 
 # returns the value corresponding to the corrrect bin

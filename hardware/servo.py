@@ -3,24 +3,33 @@ import time
 
 import sys
 
-def init():
-	GPIO.setmode(GPIO.BCM)
+class Servo:
+	def __init__(self):
+		init_GPIO()
 
-	GPIO.setup(4, GPIO.OUT)
+	def init_GPIO():
+		GPIO.setmode(GPIO.BCM)
 
-	p = GPIO.PWM(4, 50)
-	p.start(2)
+		GPIO.setup(4, GPIO.OUT)
 
-def cleanup():
-	GPIO.cleanup()
+		self.p = GPIO.PWM(4, 50)
+		self.p.start(2)
+
+	def cleanup():
+		GPIO.cleanup()
+
+	def change_duty_cycle(mode):
+		self.p.ChangeDutyCycle(mode)
+
+s = Servo()
 
 try:
 	while True:
 		mode=float(raw_input('Input:'))
-		init()
-		p.ChangeDutyCycle(mode)
+		s.init_GPIO()
+		s.change_duty_cycle(mode)
 		time.sleep(1)
-		cleanup()
+		s.cleanup()
 
 except KeyboardInterrupt:
 	cleanup()

@@ -87,17 +87,48 @@ def classification(descriptions):
     for word in descriptions:
         if (word in bluebin):
             print("This is a blue bin item!")
-            # f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "r+")
+            f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "r+")
+            count_var = f1.readlines()
+            count_var = int(count_var[0])
+            count_var += 1
+            f1.close()
+            f1 = open("/home/hacker/conuhacks2019/object-count/bluebin-count", "w")
+            f1.write(int(count_var))
+            f1.close()
             return 0
         elif (word in greybin):
             print("This is a grey bin item!")
             return 1
+            f1 = open("/home/hacker/conuhacks2019/object-count/greybin-count", "r+")
+            count_var = f1.readlines()
+            count_var = int(count_var[0])
+            count_var += 1
+            f1.close()
+            f1 = open("/home/hacker/conuhacks2019/object-count/greybin-count", "w")
+            f1.write(int(count_var))
+            f1.close()
         elif (word in greenbin):
             print("This is a green bin item!")
             return 2
+            f1 = open("/home/hacker/conuhacks2019/object-count/greenbin-count", "r+")
+            count_var = f1.readlines()
+            count_var = int(count_var[0])
+            count_var += 1
+            f1.close()
+            f1 = open("/home/hacker/conuhacks2019/object-count/greenbin-count", "w")
+            f1.write(int(count_var))
+            f1.close()
     # if for all items it didn't match a non-garbage, then the final thing returns garbage
     return 3
     print("Didn't match anything, therefore it is garbage.")
+    f1 = open("/home/hacker/conuhacks2019/object-count/garbage-count", "r+")
+    count_var = f1.readlines()
+    count_var = int(count_var[0])
+    count_var += 1
+    f1.close()
+    f1 = open("/home/hacker/conuhacks2019/object-count/garbage-count", "w")
+    f1.write(int(count_var))
+    f1.close()
 
 def main():
     # get json data from latest photo addition

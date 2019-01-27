@@ -12,9 +12,25 @@ colors = {
     'text': '#7FDBFF'
 }
 
+bluebin_count_file = open("../object-count/bluebin-count","r")
+bluebin_count = bluebin_count_file.readlines()[0]
+bluebin_count_file.close()
+
+garbage_count_file = open("../object-count/garbage-count","r")
+garbage_count = garbage_count_file.readlines()[0]
+garbage_count_file.close()
+
+greenbin_count_file = open("../object-count/greenbin-count","r")
+greenbin_count = greenbin_count_file.readlines()[0]
+greenbin_count_file.close()
+
+greybin_count_file = open("../object-count/greybin-count","r")
+greybin_count = greybin_count_file.readlines()[0]
+greybin_count_file.close() 
+
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='Hello Dash',
+        children='TrashSort',
         style={
             'textAlign': 'center',
             'color': colors['text']

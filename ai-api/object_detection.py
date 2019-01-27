@@ -25,7 +25,7 @@ def readTextFile(path):
     text_file.close()
 
 def getJson():
-    newest_file = findNewestFile("/home/hacker/conuhacks2019/image-bank")
+    newest_file = findNewestFile("/home/hacker/image-bank")
     print(newest_file)
     """Run a label request on a single image"""
 

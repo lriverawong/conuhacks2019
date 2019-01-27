@@ -7,13 +7,13 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
 
 p = GPIO.PWM(4, 50)
-
+p.start(2)
 try:
 	while True:
 		mode=float(raw_input('Input:'))
-		p.start(2)
 		p.ChangeDutyCycle(mode)
-		p.stop()
+		time.sleep(2)
+		p.ChangeDutyCycle(7.5)
 
 except KeyboardInterrupt:
 	GPIO.cleanup()

@@ -21,12 +21,10 @@ class Servo:
 	def change_duty_cycle(self, mode):
 		self.p.ChangeDutyCycle(mode)
 
-s = Servo()
-
 try:
 	while True:
 		mode=float(raw_input('Input:'))
-		s.init_GPIO()
+		s = Servo()
 		s.change_duty_cycle(mode)
 		time.sleep(1)
 		s.cleanup()

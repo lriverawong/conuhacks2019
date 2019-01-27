@@ -12,7 +12,9 @@ p.start(2)
 try:
 	while True:
 		mode=float(raw_input('Input:'))
+		p.start()
 		p.ChangeDutyCycle(mode)
+		p.stop()
 
 except KeyboardInterrupt:
 	GPIO.cleanup()

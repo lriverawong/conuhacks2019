@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
 
 p = GPIO.PWM(4, 50)
-p.start(2)
+p.start(7.5)
 
 try:
 	while True:
